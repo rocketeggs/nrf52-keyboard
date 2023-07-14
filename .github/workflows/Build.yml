@@ -12,7 +12,7 @@ jobs:
     steps:
     # 下载源码
     - name: ⏬ Get source
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         submodules: recursive
     # 下载安装相关工具
@@ -46,7 +46,7 @@ jobs:
         echo "BUILDTIME=`date '+%Y%m%d'`" >> $GITHUB_ENV
     # 上传编译生成的固件
     - name: 📤 Upload Artifact Files
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: LotKB_Keyboard_Firmware_${{ env.BUILDTIME }}_${{ env.VERSION }}
         path: |
@@ -55,7 +55,7 @@ jobs:
           ${{ github.workspace }}/keyboard/_build/*.bin
     # 下载编译生成的固件      
     - name: 📥 Download Artifact Files
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: LotKB_Keyboard_Firmware_${{ env.BUILDTIME }}_${{ env.VERSION }}
         path: ${{ github.workspace }}/keyboard/_build/Artifact
